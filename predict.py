@@ -6,7 +6,7 @@ import datetime
 import numpy as np
 
 def getslope(plot=False):
-  con = sqlite3.connect('data.db')
+  con = sqlite3.connect('/var/tmp/data.db')
   data = pd.read_sql_query("SELECT rowid,* from predict", con, index_col="created") 
   print(data.tail(2))
 
