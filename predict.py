@@ -15,7 +15,7 @@ def getslope(plot=False):
   #print(start)
   #print(stop)
 
-  selected = data.loc[(start < data.index) & (data.index < stop),'cex_ask']
+  selected = data.loc[(start < data.index) & (data.index < stop),'ask']
   #print(selected)
   #selected.plot()
   #plt.show()
