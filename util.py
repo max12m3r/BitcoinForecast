@@ -1,4 +1,4 @@
-import requests
+import requests,ccxt
 
 maxs =[]
 mins =[]
@@ -76,6 +76,13 @@ def getCurrentData(label=False):
   return vect
 
 def getCEXData():
-   data = requests.get("https://cex.io/api/ticker/BTC/USD").json()
-   #print("CEX ",data)
-   return data 
+    cex = ccxt.cex()
+    
+    orderbook = cex.fetch_order_book ("BTC/USD")
+    bid = orderbook['bids'][0][0] if len (orderbook['bids']) > 0 else None
+    ask = orderbook['asks'][0][0] if len (orderbook['asks']) > 0 else None
+    spread = (ask - bid) if (bid and ask) else None
+    print (cex.id, 'market price', { 'bid': bid, 'ask': ask, 'spread': spread })
+    #data = requests.get("https://cex.io/api/ticker/BTC/USD").json()
+    #print("CEX ",data)
+    return { 'bid': bid, 'ask': ask, 'spread': spread } 
