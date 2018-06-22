@@ -10,7 +10,7 @@ def getslope(plot=False):
   data = pd.read_sql_query("SELECT rowid,* from predict", con, index_col="created") 
   print(data.tail(2))
 
-  start = (datetime.datetime.utcnow() - datetime.timedelta(hours=2)).strftime("%Y-%m-%d %H:%M:%S")
+  start = (datetime.datetime.utcnow() - datetime.timedelta(hours=1)).strftime("%Y-%m-%d %H:%M:%S")
   stop =  datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
   #print(start)
   #print(stop)
